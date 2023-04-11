@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import Context from "../context";
 
 function SearchBar() {
   const [filters, setFilters] = useState({
@@ -6,6 +7,7 @@ function SearchBar() {
     category: "",
     source: ""
   })
+  const { searchProducts } = useContext(Context)
 
   const handleChange = ({ currentTarget }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = currentTarget
@@ -45,6 +47,7 @@ function SearchBar() {
       </select>
       <button
         type="button"
+        onClick={() => searchProducts(filters)}
       >
         Search
       </button>
