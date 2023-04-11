@@ -30,6 +30,7 @@ def scrape_products(html_content):
         productObject = dict()
         productSelector = Selector(text=product)
         productObject["website"] = "https://www.buscape.com.br" + productSelector.css("::attr(href)").get()
+        productObject["id"] = productSelector.css("::attr(href)").get()
         productObject["image"] = productSelector.css("div[data-testid='product-card::image'] span img:last-child::attr(src)").get()
         productObject["title"] = productSelector.css("h2[data-testid='product-card::name']::text").get()
         productObject["price"] = productSelector.css("p[data-testid='product-card::price']::text").get()
