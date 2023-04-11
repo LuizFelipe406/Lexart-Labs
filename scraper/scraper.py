@@ -40,6 +40,7 @@ def scrape_products(html_content):
 
 # Requisito 5
 def get_products(name, category):
-    url = f"https://www.buscape.com.br/search?q={name}{CATEGORIES[category]}"
+    searchTerm = name if name != "null" else ""
+    url = f"https://www.buscape.com.br/search?q={searchTerm}{CATEGORIES[category]}"
     html_content = fetch(url)
     return scrape_products(html_content)

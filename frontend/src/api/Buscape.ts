@@ -9,7 +9,7 @@ interface ApiProduct {
 }
 
 export const searchInBuscape = async ({ category, name }: Filters): Promise<Product[]> => {
-  const endpoint = `http://localhost:3002/search/${category}/${name}`;
+  const endpoint = `http://localhost:3002/search/${category}/${name || "null"}`;
   const request = await fetch(endpoint);
   const result: ApiProduct[] = await request.json()
   return result.map(product => ({
