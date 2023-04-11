@@ -6,8 +6,22 @@ export type Filters = {
   source: string;
 }
 
-const defaultContext = {
-  products: [{}],
+export type Product = {
+  id: string;
+  description: string;
+  photo: string;
+  price: number;
+  category: string;
+  website: string;
+}
+
+interface IContext {
+  products: Product[];
+  searchProducts: (filters: Filters) => void;
+}
+
+const defaultContext: IContext = {
+  products: [],
   searchProducts: function (filters: Filters): void {
     throw new Error(`Function not implemented. ${filters}`);
   },

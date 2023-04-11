@@ -1,14 +1,22 @@
 import React, { PropsWithChildren, useState } from "react";
-import Context, { Filters } from ".";
+import Context, { Filters, Product } from ".";
 import { searchInMercadoLivre } from "../api/MercadoLivre";
 
 function ContextProvider({ children }: PropsWithChildren) {
-  const [products, setProducts] = useState<object[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   const searchProducts = async (filters: Filters) => {
     if (filters.source === "MercadoLivre") {
-      const result = await searchInMercadoLivre(filters);
-      setProducts(result)
+      const results = await searchInMercadoLivre(filters);
+      const correctedResults: Product[] = results.map(result => ({
+        id: result.id,
+        description: result.title,
+        photo: result.thumbnail,
+        price: result.price,
+        category: filters.category,
+        website: result.permalink
+      }))
+      setProducts(correctedResults)
     }
   }
 
