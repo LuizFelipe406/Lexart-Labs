@@ -1,7 +1,6 @@
 import time
 import requests
 from parsel import Selector
-from rich import print as rprint
 
 CATEGORIES = {
     "Mobile": "&refinements%5B0%5D%5Bid%5D=categoryId&refinements%5B0%5D%5Bvalues%5D%5B0%5D=7",
@@ -39,11 +38,7 @@ def scrape_products(html_content):
 
 
 # Requisito 5
-def get_tech_news(name, category):
+def get_products(name, category):
     url = f"https://www.buscape.com.br/search?q={name}{CATEGORIES[category]}"
     html_content = fetch(url)
-    products = scrape_products(html_content)
-    rprint(products)
-
-
-get_tech_news("Samsung", "Refrigerator")
+    return scrape_products(html_content)
