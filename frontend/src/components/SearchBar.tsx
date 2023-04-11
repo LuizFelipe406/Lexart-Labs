@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import Context from "../context";
+import Context, { Filters } from "../context";
 
 function SearchBar() {
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<Filters>({
     name: "",
-    category: "",
+    category: "Mobile",
     source: ""
   })
   const { searchProducts } = useContext(Context)
@@ -40,7 +40,6 @@ function SearchBar() {
         value={filters.category}
         onChange={handleChange}
       >
-        {filters.category === "" && <option value=""></option>}
         <option value="Mobile">Mobile</option>
         <option value="Refrigerator">Refrigerator</option>
         <option value="TV">TV</option>
