@@ -1,5 +1,6 @@
 import React, { PropsWithChildren, useState } from "react";
 import Context, { Filters, Product } from ".";
+import { searchInBuscape } from "../api/Buscape";
 import { searchInMercadoLivre } from "../api/MercadoLivre";
 
 function ContextProvider({ children }: PropsWithChildren) {
@@ -8,15 +9,12 @@ function ContextProvider({ children }: PropsWithChildren) {
   const searchProducts = async (filters: Filters) => {
     if (filters.source === "MercadoLivre") {
       const results = await searchInMercadoLivre(filters);
-      const correctedResults: Product[] = results.map(result => ({
-        id: result.id,
-        description: result.title,
-        photo: result.thumbnail,
-        price: result.price,
-        category: filters.category,
-        website: result.permalink
-      }))
-      setProducts(correctedResults)
+      setProducts(results)
+    }
+    
+    if (filters.source === "Buscape") {
+      const results = await searchInBuscape(filters);
+      setProducts(results)
     }
   }
 
