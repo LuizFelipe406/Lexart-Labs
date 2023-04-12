@@ -9,25 +9,25 @@ export default class ProductController {
   async create(req: Request, res: Response) {
     const { error } = bodySchema.validate(req.body)
     if (error) {
-      res.status(400).json(error.message)
+      return res.status(400).json(error.message)
     }
 
     const insertedValues = await this.productService.create(req.body.filter, req.body.products)
 
-    res.status(201).json(insertedValues)
+    return res.status(201).json(insertedValues)
   }
 
   async getAll(req: Request, res: Response) {
     try {
       const { category, name, source } = req.params;
-      const products = await this.productService.getAll({ category, name: name || "", source })
+      const products = await this.productService.getAll({ category, name, source })
 
-      res.status(200).json(products)
+      return res.status(200).json(products)
 
     } catch (error) {
-      if (error instanceof Error) res.status(404).json(error.message)
+      if (error instanceof Error) return res.status(404).json(error.message)
 
-      res.sendStatus(500)
+      return res.sendStatus(500)
     }
   }
 }

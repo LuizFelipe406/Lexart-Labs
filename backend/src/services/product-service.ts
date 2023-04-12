@@ -7,7 +7,7 @@ export default class ProductService {
   constructor (private productModel: ProductModel, private filterModel: FilterModel) {}
 
   async create(filter: IFilter, products: IProduct[]) {
-    const newFilter = await this.filterModel.create(filter)
+    const newFilter = await this.filterModel.create({ ...filter, name: filter.name ? filter.name.toLowerCase() : null });
 
     const insertedProducts: IProduct[] = []
     await Promise.all(
@@ -24,7 +24,7 @@ export default class ProductService {
   }
 
   async getAll(filter: IFilter) {
-    const filterInDB = await this.filterModel.get(filter)
+    const filterInDB = await this.filterModel.get({...filter, name: filter.name === "null" ? null : filter.name})
     if (!filterInDB) {
       throw new Error("Filter not found")
     }

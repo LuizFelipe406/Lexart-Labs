@@ -24,7 +24,7 @@ export const searchInMercadoLivre = async ({ category, name }: IFilter): Promise
     id: result.id,
     description: result.title,
     photo: result.thumbnail,
-    price: result.price,
+    price: result.price.toString(),
     category: category,
     website: result.permalink
   }))

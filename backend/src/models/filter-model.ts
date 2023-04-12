@@ -8,7 +8,8 @@ export default class FilterModel {
   }
 
   async get(filter: IFilter) {
-    const filterInDB = await Filter.findOne({ where: { filter }})
+    console.log(filter)
+    const filterInDB = await Filter.findOne({ where: { ...filter }})
     return filterInDB
   }
 }

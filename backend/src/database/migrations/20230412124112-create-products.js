@@ -16,7 +16,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
-          model: 'Products',
+          model: 'Filters',
           key: 'id'
         }
       },
