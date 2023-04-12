@@ -17,7 +17,7 @@ Filter.init({
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   source: {
     type: DataTypes.STRING,

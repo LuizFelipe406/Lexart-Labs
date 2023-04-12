@@ -4,7 +4,7 @@ const bodySchema = Joi.object({
   filter: Joi.object({
     source: Joi.string().required(),
     category: Joi.string().required(),
-    name: Joi.string()
+    name: Joi.string().min(0)
   }),
   products: Joi.array().items(
     Joi.object({
