@@ -10,4 +10,10 @@ export default class ProductModel {
 
     return newProduct
   }
+
+  async getAll(filterId: number) {
+    const products = await Product.findAll({ where: { filterId } })
+
+    return products
+  }
 }

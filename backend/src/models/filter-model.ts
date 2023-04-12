@@ -6,4 +6,9 @@ export default class FilterModel {
     const newFilter = await Filter.create({ ...filter })
     return newFilter
   }
+
+  async get(filter: IFilter) {
+    const filterInDB = await Filter.findOne({ where: { filter }})
+    return filterInDB
+  }
 }

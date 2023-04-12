@@ -22,4 +22,15 @@ export default class ProductService {
       products: insertedProducts
     }
   }
+
+  async getAll(filter: IFilter) {
+    const filterInDB = await this.filterModel.get(filter)
+    if (!filterInDB) {
+      throw new Error("Filter not found")
+    }
+
+    const products = await this.productModel.getAll(filterInDB.id)
+
+    return products
+  }
 }
