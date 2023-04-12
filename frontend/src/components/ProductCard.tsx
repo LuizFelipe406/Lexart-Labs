@@ -1,8 +1,8 @@
 import React from "react"
-import { Product } from "../context"
+import { IProduct } from "../interfaces/IProduct"
 
 type ProductCardProps = {
-  product: Product
+  product: IProduct
 }
 
 function ProductCard({ product }: ProductCardProps) {

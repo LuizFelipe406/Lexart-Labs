@@ -1,28 +1,15 @@
 import { createContext } from "react";
-
-export type Filters = {
-  name: string;
-  category: "TV" | "Mobile" | "Refrigerator";
-  source: string;
-}
-
-export type Product = {
-  id: string;
-  description: string;
-  photo: string;
-  price: number | string;
-  category: string;
-  website: string;
-}
+import { IFilter } from "../interfaces/IFilter";
+import { IProduct } from "../interfaces/IProduct";
 
 interface IContext {
-  products: Product[];
-  searchProducts: (filters: Filters) => void;
+  products: IProduct[];
+  searchProducts: (filters: IFilter) => void;
 }
 
 const defaultContext: IContext = {
   products: [],
-  searchProducts: function (filters: Filters): void {
+  searchProducts: function (filters: IFilter): void {
     throw new Error(`Function not implemented. ${filters}`);
   },
 }

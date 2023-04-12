@@ -1,4 +1,6 @@
-import { Filters, Product } from "../context";
+import { IFilter } from "../interfaces/IFilter";
+import { IProduct } from "../interfaces/IProduct";
+
 
 interface ApiProduct {
   id: string;
@@ -8,7 +10,7 @@ interface ApiProduct {
   image: string;
 }
 
-export const searchInBuscape = async ({ category, name }: Filters): Promise<Product[]> => {
+export const searchInBuscape = async ({ category, name }: IFilter): Promise<IProduct[]> => {
   const endpoint = `http://localhost:3002/search/${category}/${name || "null"}`;
   const request = await fetch(endpoint);
   const result: ApiProduct[] = await request.json()

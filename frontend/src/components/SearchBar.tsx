@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-import Context, { Filters } from "../context";
+import Context from "../context";
+import { IFilter } from "../interfaces/IFilter";
 
 function SearchBar() {
-  const [filters, setFilters] = useState<Filters>({
+  const [filters, setFilters] = useState<IFilter>({
     name: "",
     category: "Mobile",
     source: ""

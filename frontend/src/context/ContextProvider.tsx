@@ -1,12 +1,14 @@
 import React, { PropsWithChildren, useState } from "react";
-import Context, { Filters, Product } from ".";
+import Context from ".";
 import { searchInBuscape } from "../api/Buscape";
 import { searchInMercadoLivre } from "../api/MercadoLivre";
+import { IFilter } from "../interfaces/IFilter";
+import { IProduct } from "../interfaces/IProduct";
 
 function ContextProvider({ children }: PropsWithChildren) {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
 
-  const searchProducts = async (filters: Filters) => {
+  const searchProducts = async (filters: IFilter) => {
     if (filters.source === "MercadoLivre") {
       const results = await searchInMercadoLivre(filters);
       setProducts(results)

@@ -1,4 +1,5 @@
-import { Filters, Product } from "../context";
+import { IFilter } from "../interfaces/IFilter";
+import { IProduct } from "../interfaces/IProduct";
 
 const CATEGORIES = {
   TV: "MLB1002",
@@ -14,7 +15,7 @@ interface ApiProduct {
   thumbnail: string;
 }
 
-export const searchInMercadoLivre = async ({ category, name }: Filters): Promise<Product[]> => {
+export const searchInMercadoLivre = async ({ category, name }: IFilter): Promise<IProduct[]> => {
   const categoryId = CATEGORIES[category]
   const endpoint = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${name}`;
   const request = await fetch(endpoint);
