@@ -7,7 +7,7 @@ class Product extends Model {
   declare filterId: number;
   declare description: string;
   declare photo: string;
-  declare price: number | string;
+  declare price: string;
   declare category: string;
   declare website: string;
 }

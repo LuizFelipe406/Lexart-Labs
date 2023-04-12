@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/server",
+  "main": "./build/main/server",
   "scripts": {
     "db:reset": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "build": "npx -y tsc",
@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "eslint": "^8.38.0",
@@ -20,7 +21,11 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@types/express": "^4.17.17",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.9.1",
     "mysql2": "3.2.0",
     "sequelize": "^6.31.0"
   }
