@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/server",
+  "scripts": {
+    "db:reset": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "build": "npx -y tsc",
+    "prestart": "npm run build && npm run db:reset",
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "eslint": "^8.38.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "sequelize": "^6.31.0"
+  }
+}
