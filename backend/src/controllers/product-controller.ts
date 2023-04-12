@@ -19,7 +19,8 @@ export default class ProductController {
 
   async getAll(req: Request, res: Response) {
     try {
-      const products = await this.productService.getAll(req.body)
+      const { category, name, source } = req.params;
+      const products = await this.productService.getAll({ category, name: name || "", source })
 
       res.status(200).json(products)
 
