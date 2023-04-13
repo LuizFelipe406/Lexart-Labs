@@ -21,10 +21,11 @@ export const searchInMercadoLivre = async ({ category, name }: IFilter): Promise
   const endpoint = `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${name}`;
   const request = await fetch(endpoint);
   const { results }: { results: ApiProduct[] } = await request.json()
+  console.log(results[0])
   const correctedResults = results.map(result => ({
     id: result.id,
     description: result.title,
-    photo: result.thumbnail,
+    photo: result.thumbnail.replace("-I.jpg", "-O.webp"),
     price: result.price.toString(),
     category: category,
     website: result.permalink

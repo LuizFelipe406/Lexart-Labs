@@ -35,7 +35,7 @@ function SearchBar() {
   }
 
   return (
-    <div className="mt-20 flex align-center h-fit w-fit border rounded-xl p-10 shadow-lg">
+    <div className="mt-20 flex align-center h-fit w-fit border rounded-xl p-10 shadow-lg bg-white">
       <TextField
         sx={ { marginRight: "1vw" } }
         label="Type something to search"
