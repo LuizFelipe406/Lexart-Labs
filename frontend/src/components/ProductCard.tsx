@@ -40,6 +40,7 @@ function ProductCard({ product }: ProductCardProps) {
         <Typography
           variant="body2"
           color="text.secondary"
+          className="break-all"
         >
           {`From: ${product.website}`}
         </Typography>
