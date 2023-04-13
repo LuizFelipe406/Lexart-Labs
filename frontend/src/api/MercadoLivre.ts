@@ -4,7 +4,8 @@ import { IProduct } from "../interfaces/IProduct";
 const CATEGORIES = {
   TV: "MLB1002",
   Mobile: "MLB1055",
-  Refrigerator: "MLB181294"
+  Refrigerator: "MLB181294",
+  "": null
 }
 
 interface ApiProduct {

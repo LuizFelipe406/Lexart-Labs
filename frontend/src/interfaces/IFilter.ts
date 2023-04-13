@@ -1,5 +1,5 @@
 export interface IFilter {
   name: string;
-  category: "TV" | "Mobile" | "Refrigerator";
+  category: "TV" | "Mobile" | "Refrigerator" | "";
   source: string;
 }

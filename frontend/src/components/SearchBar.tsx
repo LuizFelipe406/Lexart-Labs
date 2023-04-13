@@ -1,17 +1,32 @@
+import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import React, { useContext, useState } from "react";
 import Context from "../context";
 import { IFilter } from "../interfaces/IFilter";
+import Button from "@mui/material/Button";
 
 function SearchBar() {
   const [filters, setFilters] = useState<IFilter>({
     name: "",
-    category: "Mobile",
+    category: "",
     source: ""
   })
   const { searchProducts } = useContext(Context)
 
-  const handleChange = ({ currentTarget }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = currentTarget
+  const handleInputChange = ({ target }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = target
+
+    setFilters((oldState) => ({
+      ...oldState,
+      [name]: value
+    }))
+  }
+
+  const handleSelectChange = ({ target }: SelectChangeEvent) => {
+    const { name, value } = target
 
     setFilters((oldState) => ({
       ...oldState,
@@ -21,36 +36,48 @@ function SearchBar() {
 
   return (
     <div>
-      <input
+      <TextField
+        label="Type something to search"
+        variant="outlined"
         type="text"
         name="name"
         value={filters.name}
-        onChange={handleChange}
+        onChange={handleInputChange}
       />
-      <select
-        name="source"
-        value={filters.source}
-        onChange={handleChange}
-      >
-        {filters.source === "" && <option value=""></option>}
-        <option value="MercadoLivre">Mercado Livre</option>
-        <option value="Buscape">Buscape</option>
-      </select>
-      <select
-        name="category"
-        value={filters.category}
-        onChange={handleChange}
-      >
-        <option value="Mobile">Mobile</option>
-        <option value="Refrigerator">Refrigerator</option>
-        <option value="TV">TV</option>
-      </select>
-      <button
+      <FormControl>
+        <InputLabel id="source-label">Source</InputLabel>
+        <Select
+          labelId="source-label"
+          label="source"
+          name="source"
+          value={filters.source}
+          onChange={handleSelectChange}
+        >
+          <MenuItem value="MercadoLivre">Mercado Livre</MenuItem>
+          <MenuItem value="Buscape">Buscape</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl>
+        <InputLabel id="category-label">Category</InputLabel>
+        <Select
+          labelId="category-label"
+          label="category"
+          name="category"
+          value={filters.category}
+          onChange={handleSelectChange}
+        >
+          <MenuItem value="Mobile">Mobile</MenuItem>
+          <MenuItem value="Refrigerator">Refrigerator</MenuItem>
+          <MenuItem value="TV">TV</MenuItem>
+        </Select>
+      </FormControl>
+      <Button
+        variant="contained"
         type="button"
         onClick={() => searchProducts(filters)}
       >
         Search
-      </button>
+      </Button>
     </div>
   )
 }
