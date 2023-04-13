@@ -35,8 +35,9 @@ function SearchBar() {
   }
 
   return (
-    <div>
+    <div className="mt-20 flex align-center h-fit w-fit border rounded-xl p-10 shadow-lg">
       <TextField
+        sx={ { marginRight: "1vw" } }
         label="Type something to search"
         variant="outlined"
         type="text"
@@ -44,7 +45,7 @@ function SearchBar() {
         value={filters.name}
         onChange={handleInputChange}
       />
-      <FormControl>
+      <FormControl sx={ { width: "8vw", marginRight: "1vw" } }>
         <InputLabel id="source-label">Source</InputLabel>
         <Select
           labelId="source-label"
@@ -57,7 +58,7 @@ function SearchBar() {
           <MenuItem value="Buscape">Buscape</MenuItem>
         </Select>
       </FormControl>
-      <FormControl>
+      <FormControl sx={ { width: "8vw", marginRight: "1vw" } }>
         <InputLabel id="category-label">Category</InputLabel>
         <Select
           labelId="category-label"

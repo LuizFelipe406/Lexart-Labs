@@ -4,7 +4,7 @@ import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
-    <div>
+    <div className="w-screen h-screen flex flex-col items-center">
       <SearchBar />
       <ProductList />
     </div>
