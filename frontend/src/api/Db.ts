@@ -18,10 +18,10 @@ export const searchInDB = async ({ source, category, name }: IFilter): Promise<I
 export const insertInDb = async (filter: IFilter, products: IProduct[]) => {
   const url = import.meta.env.MODE === "production" ? "https://lexart-labs-backend-production.up.railway.app" : "http://localhost:3001"
   const endpoint = `${url}/product`
-  const { status, data } = await axios.post(endpoint, {
+  const { status } = await axios.post(endpoint, {
     filter,
     products
   })
 
-  if (status === 201) console.log(data)
+  if (status === 201) return true
 }
