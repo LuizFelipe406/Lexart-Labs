@@ -11,9 +11,7 @@ interface ApiProduct {
 }
 
 export const searchInBuscape = async ({ category, name }: IFilter): Promise<IProduct[]> => {
-  const url = import.meta.env.VITE_SCRAPER_URL || "http://localhost:3002"
-  console.log(import.meta.env.VITE_SCRAPER_URL)
-  console.log(import.meta.env)
+  const url = import.meta.env.MODE === "production" ? "lexart-labs-scraper-production.up.railway.app" : "http://localhost:3002"
   const endpoint = `${url}/search/${category}/${name || "null"}`;
   const request = await fetch(endpoint);
   const result: ApiProduct[] = await request.json()

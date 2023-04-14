@@ -29,6 +29,7 @@ services:
       - 3000:3000
     platform: linux/x86_64
     working_dir: /app-frontend
+    command: npm run dev
     depends_on:
       backend:
         condition: service_healthy
