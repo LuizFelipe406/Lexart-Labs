@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { IFilter } from "../interfaces/IFilter";
 import { IProduct } from "../interfaces/IProduct";
 
