@@ -12,7 +12,7 @@ interface ApiProduct {
 }
 
 export const searchInBuscape = async ({ category, name }: IFilter): Promise<IProduct[]> => {
-  const url = import.meta.env.MODE === "production" ? "lexart-labs-scraper-production.up.railway.app" : "http://localhost:3002"
+  const url = import.meta.env.MODE === "production" ? "https://lexart-labs-scraper-production.up.railway.app" : "http://localhost:3002"
   console.log(import.meta.env)
   const endpoint = `${url}/search/${category}/${name || "null"}`;
   const { data } = await axios.get(endpoint)
