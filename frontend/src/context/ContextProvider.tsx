@@ -10,10 +10,10 @@ function ContextProvider({ children }: PropsWithChildren) {
   const [products, setProducts] = useState<IProduct[]>([]);
 
   const searchProducts = async (filters: IFilter) => {
-    // const productsInDb = await searchInDB(filters)
-    // if (productsInDb) {
-    //   setProducts(productsInDb)
-    // } else {
+    const productsInDb = await searchInDB(filters)
+    if (productsInDb) {
+      setProducts(productsInDb)
+    } else {
       if (filters.source === "MercadoLivre") {
         const results = await searchInMercadoLivre(filters);
         setProducts(results)
@@ -26,7 +26,7 @@ function ContextProvider({ children }: PropsWithChildren) {
         insertInDb(filters, results)
       }
     }
-    // }
+    }
 
   const contextValue = {
     products,
