@@ -1,3 +1,4 @@
+import axios from "axios"
 import { IFilter } from "../interfaces/IFilter";
 import { IProduct } from "../interfaces/IProduct";
 
@@ -12,10 +13,12 @@ interface ApiProduct {
 
 export const searchInBuscape = async ({ category, name }: IFilter): Promise<IProduct[]> => {
   const url = import.meta.env.MODE === "production" ? "lexart-labs-scraper-production.up.railway.app" : "http://localhost:3002"
+  console.log(import.meta.env)
   const endpoint = `${url}/search/${category}/${name || "null"}`;
-  const request = await fetch(endpoint);
-  const result: ApiProduct[] = await request.json()
-  return result.map(product => ({
+  const { data } = await axios.get(endpoint)
+      .then(({ status, data }) => ({ status, data }))
+      .catch((error) => error.toJSON());
+  return data.map((product: ApiProduct) => ({
     id: product.id,
     description: product.title,
     photo: product.image,
