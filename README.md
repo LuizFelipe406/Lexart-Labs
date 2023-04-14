@@ -8,7 +8,8 @@
         <li>Armazenar os resultados das buscas em um banco de dados para pesquisas futuras com o mesmo filtro.</li>
     </ul>
     <h2>Como utilizar</h2>
-    <p>Para utilizar a aplicação, basta clonar o repositório e rodá-lo com docker-compose</p>
+    <p>Confira a aplicação rodando no deploy: <a target=_blank href=https://lexart-labs-frontend-production.up.railway.app/>https://lexart-labs-frontend-production.up.railway.app/</a></p>
+    <p>Para utilizar a aplicação localmente, basta clonar o repositório e rodá-lo com docker-compose</p>
     <pre>
 git clone git@github.com:LuizFelipe406/Lexart-Labs.git
 cd Lexart-Labs
