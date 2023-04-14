@@ -11,7 +11,8 @@ interface ApiProduct {
 }
 
 export const searchInBuscape = async ({ category, name }: IFilter): Promise<IProduct[]> => {
-  const endpoint = `http://localhost:3002/search/${category}/${name || "null"}`;
+  const url = process.env.SCRAPER_URL || "http://localhost:3002"
+  const endpoint = `${url}/search/${category}/${name || "null"}`;
   const request = await fetch(endpoint);
   const result: ApiProduct[] = await request.json()
   return result.map(product => ({
